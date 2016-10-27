@@ -5,7 +5,8 @@ Fourth project from the Front-End Web Developer Nanodegree in Udacity: optimized
 optimized index.html to achieve a score of 90 in PageSpeed Insights
 
 ###How to run?
-Portfolio - https://inesarmadabras.github.io/P4-Website-Optimization/dist/
+* **Optimized Portfolio** -  https://inesarmadabras.github.io/P4-Website-Optimization/dist/
+* Original Portfolio - https://inesarmadabras.github.io/P4-Website-Optimization/original/
 
 ##PageSpeed Insights: 
 * Link: [PageSpeed Insights Result](https://goo.gl/h86ReC) 
@@ -38,7 +39,8 @@ Portfolio - https://inesarmadabras.github.io/P4-Website-Optimization/dist/
 Optimized main.js to achieve 60 fps in pizza.html
 
 ###How to run?
-Portfolio - https://inesarmadabras.github.io/P4-Website-Optimization/dist/
+* **Optimized pizza page** - https://inesarmadabras.github.io/P4-Website-Optimization/dist/views/pizza.html
+* Original pizza page - https://inesarmadabras.github.io/P4-Website-Optimization/original/views/pizza.html
 
 ### Optimization for pizza.html
 * Apply optimizations for PageSpeed: minify css and js, optimize images, inline css
