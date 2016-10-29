@@ -522,13 +522,14 @@ function updatePositions() {
     // optimize
     var items = document.getElementsByClassName('.mover');
     var currentScrollY = latestKnownScrollY / 1250;
+    var bodyN = (document.body.scrollTop / 1250);
 
     var phases = [
-                    Math.sin(bodyNum + 0),
-                    Math.sin(bodyNum + 1),
-                    Math.sin(bodyNum + 2),
-                    Math.sin(bodyNum + 3),
-                    Math.sin(bodyNum + 4)
+                    Math.sin(bodyN + 0),
+                    Math.sin(bodyN + 1),
+                    Math.sin(bodyN + 2),
+                    Math.sin(bodyN + 3),
+                    Math.sin(bodyN + 4)
                   ];
 
     for (var i = 0; i < items.length; i++) {
