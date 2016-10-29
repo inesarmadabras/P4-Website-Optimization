@@ -524,8 +524,8 @@ function updatePositions() {
   var items = document.getElementsByClassName('mover');
   //Moved the phase calculation into its own for loop that appends each phase to an array, rather than declaring and setting the phase variable each time.
   var phases = [];
-  for (var i = 0; i < 5; i++){
-    phases.push(Math.sin((document.body.scrollTop / 1250) + (i % 5)));
+  for (var j = 0; j < 5; j++){
+    phases.push(Math.sin((document.body.scrollTop / 1250) + (j % 5)));
   }
   //The pizza item styles are changed by accessing the relevant element of the phaseList array, rather than resuing the phase variable.
   for (var i = 0; i < items.length; i++) {
