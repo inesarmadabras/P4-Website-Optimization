@@ -59,6 +59,17 @@ Optimized main.js to achieve 60 fps in pizza.html
 
 `l.515` - ```updatePositions()``` optimized
 
+#### Updates (new submission):
+Changed ```querySelector``` calls to `getElementById`
+
+`l.468` - definition of ```pizzaDiv``` variable is now out of for loop.
+
+`l.556` - definition of ```movingPizzas``` variable is now out of for loop.
+
+`l.517` - ```function updatePositions()``` redone: new array ```var phases[]```
+
+
+
 ---------
 ## 3. Extras: 
 * All the code was been validated with https://validator.w3.org/ and http://jshint.com/
