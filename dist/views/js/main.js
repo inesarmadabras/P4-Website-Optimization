@@ -522,12 +522,24 @@ function updatePositions() {
   // optimize: pull currentScrollY out of for loop and fall back to latest known position
   var items = document.querySelectorAll('.mover');
   var currentScrollY = latestKnownScrollY / 1250;
-  var phase;
+
+  var items = document.getElementsByClassName('mover');
+  //Moved the phase calculation into its own for loop that appends each phase to an array, rather than declaring and setting the phase variable each time.
+  phases = [];
+  for (var j = 0; j < 5; j++){
+    phases.push(Math.sin((document.body.scrollTop / 1250) + (j % 5)));
+  }
+  //The pizza item styles are changed by accessing the relevant element of the phaseList array, rather than resuing the phase variable.
+  for (var i = 0; i < items.length; i++) {
+    items[i].style.left = items[i].basicLeft + 100 * phases[(i % 5)] + 'px';
+}
+
+ /* var phase;
   for (var i = 0; i < items.length; i++) {
     // optimize: insert currentScrollY variable
     phase = Math.sin(currentScrollY + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-  }
+  }*/
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
