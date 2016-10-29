@@ -440,7 +440,7 @@ var resizePizzas = function (size) {
         return dx;
     }
 
-    var pizzaContainers = document.querygetElementsByClassName(".randomPizzaContainer"); //OPTIMIZED
+    var pizzaContainers = document.getElementsByClassName(".randomPizzaContainer"); //OPTIMIZED
     var pizzaContainersLength = pizzaContainers.length;
     var dx = determineDx(pizzaContainers[0], size);
     var newwidth = (pizzaContainers[0].offsetWidth + dx) + 'px';
@@ -450,10 +450,10 @@ var resizePizzas = function (size) {
     function changePizzaSizes(size) { //OPTIMIZED
         //pull pizzaContainers selector and length calculations
         /*
-          for (var i = 0; i < document.querygetElementsByClassName(".randomPizzaContainer").length; i++) {
-          var dx = determineDx(document.querygetElementsByClassName(".randomPizzaContainer")[i], size);
-          var newwidth = (document.querygetElementsByClassName(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-          document.querygetElementsByClassName(".randomPizzaContainer")[i].style.width = newwidth;
+          for (var i = 0; i < document.getElementsByClassName(".randomPizzaContainer").length; i++) {
+          var dx = determineDx(document.getElementsByClassName(".randomPizzaContainer")[i], size);
+          var newwidth = (document.getElementsByClassName(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
+          document.getElementsByClassName(".randomPizzaContainer")[i].style.width = newwidth;
         */
         for (var i = 0; i < pizzaContainersLength; i++) {
          pizzaContainers[i].style.width = newwidth;
@@ -526,7 +526,7 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
   // optimize: pull currentScrollY out of for loop and fall back to latest known position
-  var items = document.querygetElementsByClassName('.mover');
+  var items = document.getElementsByClassName('.mover');
   var currentScrollY = latestKnownScrollY / 1250;
   var phase;
   for (var i = 0; i < items.length; i++) {
