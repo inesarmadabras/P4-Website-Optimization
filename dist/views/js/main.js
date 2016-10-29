@@ -520,26 +520,18 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
   // optimize: pull currentScrollY out of for loop and fall back to latest known position
-  var items = document.querySelectorAll('.mover');
-  var currentScrollY = latestKnownScrollY / 1250;
 
   var items = document.getElementsByClassName('mover');
   //Moved the phase calculation into its own for loop that appends each phase to an array, rather than declaring and setting the phase variable each time.
   phases = [];
-  for (var j = 0; j < 5; j++){
-    phases.push(Math.sin((document.body.scrollTop / 1250) + (j % 5)));
+  for (var i = 0; i < 5; i++){
+    phases.push(Math.sin((document.body.scrollTop / 1250) + (i % 5)));
   }
   //The pizza item styles are changed by accessing the relevant element of the phaseList array, rather than resuing the phase variable.
   for (var i = 0; i < items.length; i++) {
     items[i].style.left = items[i].basicLeft + 100 * phases[(i % 5)] + 'px';
 }
 
- /* var phase;
-  for (var i = 0; i < items.length; i++) {
-    // optimize: insert currentScrollY variable
-    phase = Math.sin(currentScrollY + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-  }*/
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
@@ -561,7 +553,7 @@ document.addEventListener('DOMContentLoaded', function() {
   //Changed the number of pizzas generated to be based on the window height.
   var rows = Math.round(window.screen.height / s);
   var pizzaCount = rows * cols;
-  //Changed querySelector call to getElementById, saved this DOM call to local variable, movingPizzas, outside of the for loop.
+  //Optimized : Changed querySelector call to getElementById, saved this DOM call to local variable, movingPizzas, outside of the for loop.
   var movingPizzas = document.getElementById("movingPizzas1");
   for (var i = 0; i < pizzaCount; i++) {
     var elem = document.createElement('img');
