@@ -519,15 +519,14 @@ function updatePositions() {
   ticking = false;
   frame++;
   window.performance.mark("mark_start_frame");
-  // optimize: pull currentScrollY out of for loop and fall back to latest known position
 
   var items = document.getElementsByClassName('mover');
-  //Moved the phase calculation into its own for loop that appends each phase to an array, rather than declaring and setting the phase variable each time.
+
   var phases = [];
   for (var j = 0; j < 5; j++){
     phases.push(Math.sin((document.body.scrollTop / 1250) + (j % 5)));
   }
-  //The pizza item styles are changed by accessing the relevant element of the phaseList array, rather than resuing the phase variable.
+
   for (var i = 0; i < items.length; i++) {
     items[i].style.left = items[i].basicLeft + 100 * phases[(i % 5)] + 'px';
 }
@@ -553,8 +552,8 @@ document.addEventListener('DOMContentLoaded', function() {
   //Changed the number of pizzas generated to be based on the window height.
   var rows = Math.round(window.screen.height / s);
   var pizzaCount = rows * cols;
-  //Optimized: Changed querySelector call to getElementById, saved this DOM call to local variable, movingPizzas, outside of the for loop.
-  var movingPizzas = document.getElementById("movingPizzas1");
+  //Optimized: Changed querySelector call to getElementById
+  var movingPizzas = document.getElementById("movingPizzas1");   //optimized
   for (var i = 0; i < pizzaCount; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
