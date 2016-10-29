@@ -440,7 +440,7 @@ var resizePizzas = function (size) {
         return dx;
     }
 
-    var pizzaContainers = document.getElementsByClassName("randomPizzaContainer"); //OPTIMIZED
+    var pizzaContainers = document.querySelectorAll(".randomPizzaContainer"); //OPTIMIZED
     var pizzaContainersLength = pizzaContainers.length;
     var dx = determineDx(pizzaContainers[0], size);
     var newwidth = (pizzaContainers[0].offsetWidth + dx) + 'px';
@@ -523,7 +523,7 @@ function updatePositions() {
 
   var items = document.getElementsByClassName('mover');
   //Moved the phase calculation into its own for loop that appends each phase to an array, rather than declaring and setting the phase variable each time.
-  phases = [];
+  var phases = [];
   for (var i = 0; i < 5; i++){
     phases.push(Math.sin((document.body.scrollTop / 1250) + (i % 5)));
   }
@@ -553,7 +553,7 @@ document.addEventListener('DOMContentLoaded', function() {
   //Changed the number of pizzas generated to be based on the window height.
   var rows = Math.round(window.screen.height / s);
   var pizzaCount = rows * cols;
-  //Optimized : Changed querySelector call to getElementById, saved this DOM call to local variable, movingPizzas, outside of the for loop.
+  //Optimized: Changed querySelector call to getElementById, saved this DOM call to local variable, movingPizzas, outside of the for loop.
   var movingPizzas = document.getElementById("movingPizzas1");
   for (var i = 0; i < pizzaCount; i++) {
     var elem = document.createElement('img');
