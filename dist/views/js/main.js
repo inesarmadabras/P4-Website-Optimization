@@ -440,7 +440,7 @@ var resizePizzas = function (size) {
         return dx;
     }
 
-    var pizzaContainers = document.getElementsByClassName(".randomPizzaContainer"); //OPTIMIZED
+    var pizzaContainers = document.getElementsByClassName("randomPizzaContainer"); //OPTIMIZED
     var pizzaContainersLength = pizzaContainers.length;
     var dx = determineDx(pizzaContainers[0], size);
     var newwidth = (pizzaContainers[0].offsetWidth + dx) + 'px';
@@ -526,7 +526,7 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
   // optimize: pull currentScrollY out of for loop and fall back to latest known position
-  var items = document.getElementsByClassName('.mover');
+  var items = document.getElementsByClassName('mover');
   var currentScrollY = latestKnownScrollY / 1250;
   var phase;
   for (var i = 0; i < items.length; i++) {
