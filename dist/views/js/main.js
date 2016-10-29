@@ -492,73 +492,54 @@ function logAverageFrame(times) { // times is the array of User Timing measureme
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
-
-// optimize: initialize latest scroll position to 0 and tick to true
-var latestKnownScrollY = 0;
-var ticking = true;
-
-// optimize: scroll callback, bound to scroll window event listener
-function onScroll() {
-    latestKnownScrollY = window.scrollY;
-    requestTick();
-}
-
-// optimize: when scrolls, calls `requestAnimationFrame` only once
-function requestTick() {
-    if (!ticking) {
-        requestAnimationFrame(updatePositions);
-    }
-    ticking = true;
-}
-
-// updates positions of pizzas
 function updatePositions() {
-    // optimize
-    ticking = false;
-    frame++;
-    window.performance.mark("mark_start_frame");
-    // optimize
-    var items = document.getElementsByClassName('.mover');
-    var currentScrollY = latestKnownScrollY / 1250;
-    var bodyN = (document.body.scrollTop / 1250);
+  frame++;
+  window.performance.mark("mark_start_frame");
 
-    var phases = [
-                    Math.sin(bodyN + 0),
-                    Math.sin(bodyN + 1),
-                    Math.sin(bodyN + 2),
-                    Math.sin(bodyN + 3),
-                    Math.sin(bodyN + 4)
+  var items = document.querySelectorAll('.mover');
+  // calculate number based on scroll position, same for all pizzas
+  var bodyNum = (document.body.scrollTop / 1250);
+  // calculate phase number for all possible outcomes of n % 5
+  var phaseNums = [
+                    Math.sin(bodyNum + 0),
+                    Math.sin(bodyNum + 1),
+                    Math.sin(bodyNum + 2),
+                    Math.sin(bodyNum + 3),
+                    Math.sin(bodyNum + 4)
                   ];
 
-    for (var i = 0; i < items.length; i++) {
+  for (var i = 0; i < items.length; i++) {
     // set correct phase number based on i % 5
-        var phase = phases[i%5];
-        items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-    }
+    var phase = phaseNums[i%5];
+    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+  }
 
-    window.performance.mark("mark_end_frame");
-    window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
-    if (frame % 10 === 0) {
-        var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
-        logAverageFrame(timesToUpdatePosition);
-    }
+  // User Timing API to the rescue again. Seriously, it's worth learning.
+  // Super easy to create custom metrics.
+  window.performance.mark("mark_end_frame");
+  window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
+  if (frame % 10 === 0) {
+    var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
+    logAverageFrame(timesToUpdatePosition);
+  }
 }
 
-// runs on scroll, optimize: change callback function to `onScroll`
-window.addEventListener('scroll', onScroll);
+// runs updatePositions on scroll
+window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
-document.addEventListener('DOMContentLoaded', function () {  //optimized
-    var cols = 8;
-    var s = 256;
-    // Loop in reverse to improve performance
-    for (var i = 31; i--;) {
-        var elem = document.createElement('img');
-        elem.className = 'mover';
-        elem.src = "images/pizza.png";
-        elem.basicLeft = (i % cols) * s;
-        elem.style.top = (Math.floor(i / cols) * s) + 'px';
-        document.querySelector("#movingPizzas1").appendChild(elem);
-    }
-    updatePositions();
+document.addEventListener('DOMContentLoaded', function() {
+  var cols = 8;
+  var s = 256;
+  for (var i = 0; i < 200; i++) {
+    var elem = document.createElement('img');
+    elem.className = 'mover';
+    elem.src = "images/pizza.png";
+    elem.style.height = "100px";
+    elem.style.width = "73.333px";
+    elem.basicLeft = (i % cols) * s;
+    elem.style.top = (Math.floor(i / cols) * s) + 'px';
+    document.querySelector("#movingPizzas1").appendChild(elem);
+  }
+  updatePositions();
 });
