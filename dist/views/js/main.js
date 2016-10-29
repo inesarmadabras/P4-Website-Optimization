@@ -557,7 +557,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var rows = Math.round(window.screen.height / s);
   var pizzaCount = rows * cols;
   //Changed querySelector call to getElementById, saved this DOM call to local variable, movingPizzas, outside of the for loop.
-  var movingPizzas = document.getElementById("movPizzas1");
+  var movingPizzas = document.getElementById("movingPizzas1");
   for (var i = 0; i < pizzaCount; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
