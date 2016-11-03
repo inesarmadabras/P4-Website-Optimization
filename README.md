@@ -35,7 +35,7 @@ optimized index.html to achieve a score of 90 in PageSpeed Insights
 
 * Put the Google Analytics script at the footer of the page.
 
-## 2. Portfolio Optimization
+## 2. Code Optimization
 Optimized main.js to achieve 60 fps in pizza.html
 
 ###How to run?
