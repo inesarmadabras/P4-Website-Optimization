@@ -79,6 +79,6 @@ Changed ```querySelector``` calls to `getElementById`
 ## 3. Extras: 
 * All the code was been validated with https://validator.w3.org/ and http://jshint.com/
 
-## Update:
+## Update (8/11/2016):
 * Added comments: Header comment, Function Header 
 * `l.572` `var elem` declared outside of the `for` cycle
