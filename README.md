@@ -59,7 +59,10 @@ Optimized main.js to achieve 60 fps in pizza.html
 
 `l.496` - Sliding background pizzas optimized (with https://www.html5rocks.com/en/tutorials/speed/animations/)  
 
+`l.482` `var pizzaDiv` declared outside of the for cycle
+
 `l.515` - ```updatePositions()``` optimized
+
 
 #### Updates (new submission):
 Changed ```querySelector``` calls to `getElementById`
@@ -78,3 +81,4 @@ Changed ```querySelector``` calls to `getElementById`
 
 ## Update:
 * Added comments: Header comment, Function Header 
+* `l.572` `var elem` declared outside of the `for` cycle
