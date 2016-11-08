@@ -75,3 +75,6 @@ Changed ```querySelector``` calls to `getElementById`
 ---------
 ## 3. Extras: 
 * All the code was been validated with https://validator.w3.org/ and http://jshint.com/
+
+## Update:
+* Added comments: Header comment, Function Header 
